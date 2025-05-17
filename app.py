@@ -20,20 +20,6 @@ def view_post(post_id):
     print(comments);
     return render_template('post.html', post=post, comments=comments)
 
-# #create post
-# @app.route('/api/create', methods=['POST'])
-# def api_create_post():
-#     data = request.get_json()
-#     title = data.get('title')
-#     content = data.get('content')
-#     author = data.get('author')
-#     if( not title or not content or not author):
-#         return jsonify({'error': 'Missing title, content or author'}), 400
-
-#     post=create_post(title, content, author)
-#     # comments = get_replies_for_post(post.id)
-#     return jsonify(post), 201
-#     # return render_template('post.html', post=post, comments=comments)
 
 @app.route('/api/create', methods=['POST'])
 def api_create_post():
