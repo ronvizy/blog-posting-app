@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reddit Clone - Feed</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f7f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .post-card {
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background 0.2s;
+    }
+
+    .post-card:hover {
+      background: #f9fafb;
+    }
+
+    .post-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #0079d3;
+      text-decoration: none;
+    }
+
+    .post-snippet {
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .meta {
+      color: #777;
+      font-size: 13px;
+    }
+
+    /* Floating plus button */
+    .create-post-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #0079d3;
+      color: white;
+      font-size: 32px;
+      font-weight: bold;
+      width: 56px;
+      height: 56px;
+      text-align: center;
+      line-height: 56px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    .create-post-btn:hover {
+      background-color: #005999;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Feed</h1>
+
+    {% for post in posts %}
+      <div class="post-card">
+        <a class="post-title" href="{{ url_for('view_post', post_id=post.id) }}">
+          {{ post.title }}
+        </a>
+        <div class="meta">Posted by {{ post.author }} · {{ post.timestamp.strftime('%Y-%m-%d %H:%M') }}</div>
+        <div class="post-snippet">{{ post.content[:150] }}{% if post.content|length > 150 %}...{% endif %}</div>
+      </div>
+    {% else %}
+      <p>No posts found.</p>
+    {% endfor %}
+
+  </div>
+
+  <a href="{{ url_for('show_create_post_form') }}" class="create-post-btn" title="Create Post">+</a>
+
+</body>
+</html>

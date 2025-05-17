@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Corona",
+    "content": "How does corona impacted the local market",
+    "author": "Rohan",
+    "timestamp": "2025-05-17T02:23:27.268099"
+  },
+  {
+    "id": 2,
+    "title": "Impact of AI on Industries.",
+    "content": "AI is the talk of everywhere, some are astonished by its abilities and some are stressed, tell me about how it is going to affect each of the industry including the creative and corporative...",
+    "author": "Vatsalya",
+    "timestamp": "2025-05-17T03:30:39.376654"
+  },
+  {
+    "id": 3,
+    "title": "Its a new post testing",
+    "content": "Testing a post api",
+    "author": "tester",
+    "timestamp": "2025-05-17T15:44:56.466648"
+  }
+]

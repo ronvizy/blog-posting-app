@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta charset="UTF-8">
+  <title>{{ post.title }}</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f7f8;
+      padding: 20px;
+    }
+
+    .home-button {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 8px 16px;
+      background-color: #fb7b4c;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    .post {
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .post h2 {
+      margin-top: 0;
+    }
+
+    .meta {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .comments {
+      margin-top: 20px;
+    }
+
+    .comment {
+      background: #fbbb4c;
+      padding: 12px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .comment .meta {
+      font-size: 13px;
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    .nested {
+      margin-left: 30px;
+      border-left: 2px solid #ddd;
+      padding-left: 10px;
+    }
+
+    .collapse-toggle {
+      cursor: pointer;
+      font-size: 12px;
+      color: #0079d3;
+      border: none;
+      background: none;
+      padding: 0;
+      margin-top: 5px;
+    }
+
+    .reply-form {
+      margin-top: 5px;
+    }
+
+    textarea {
+      width: 70%;
+      border: none;
+      height: 40px;
+      border-radius: 15px;
+      margin-top: 5px;
+      padding: 8px;
+    }
+
+    input[type="text"] {
+      width: 50%;
+      padding: 6px;
+      margin-top: 5px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 5px;
+      padding: 6px 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <a class="home-button" href="/">← Home</a>
+
+  <div class="post">
+    <h2>{{ post.title }}</h2>
+    <div class="meta">Posted by {{ post.author }} on {{ post.timestamp.strftime('%Y-%m-%d %H:%M') }}</div>
+    <p>{{ post.content }}</p>
+
+    <div class="reply-form">
+      <form method="POST" action="/reply/{{ post.id }}">
+        <input type="hidden" name="parent_id" value="">
+        <textarea name="content" placeholder="Write a reply..."></textarea><br>
+        <input type="text" name="author" placeholder="Your name"><br>
+        <button type="submit">Reply</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="comments">
+    <h3>Comments</h3>
+
+    {% macro render_comment(comment, children) %}
+    <div class="comment" id="comment-{{ comment.id }}">
+      <div class="meta">{{ comment.author }} · {{ comment.timestamp.strftime('%Y-%m-%d %H:%M') }}</div>
+      <div>{{ comment.content }}</div>
+
+      {% if children[comment.id] %}
+      <button class="collapse-toggle" onclick="toggleNested({{ comment.id }})" id="toggle-{{ comment.id }}">[-]
+        Collapse</button>
+      <div class="nested" id="nested-{{ comment.id }}">
+        {% for child in children[comment.id] %}
+        {{ render_comment(child, children) }}
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <button class="collapse-toggle" onclick="toggleReplyForm({{ comment.id }})">Reply</button>
+      <div class="reply-form" id="reply-form-{{ comment.id }}" style="display: none;">
+        <form method="POST" action="/reply/{{ post.id }}">
+          <input type="hidden" name="parent_id" value="{{ comment.id }}">
+          <textarea name="content" placeholder="Write a reply..."></textarea><br>
+          <input type="text" name="author" placeholder="Your name"><br>
+          <button type="submit">Reply</button>
+        </form>
+      </div>
+    </div>
+    {% endmacro %}
+
+    {% set children = {} %}
+    {% for comment in comments %}
+    {% set _ = children.setdefault(comment.parent_id, []).append(comment) %}
+    {% endfor %}
+
+    {% for comment in children[None] %}
+    {{ render_comment(comment, children) }}
+    {% endfor %}
+  </div>
+
+  <script>
+    function toggleNested(commentId) {
+      const nested = document.getElementById("nested-" + commentId);
+      const toggleBtn = document.getElementById("toggle-" + commentId);
+      if (nested.style.display === "none") {
+        nested.style.display = "block";
+        toggleBtn.textContent = "[-] Collapse";
+      } else {
+        nested.style.display = "none";
+        toggleBtn.textContent = "[+] Expand";
+      }
+    }
+
+    function toggleReplyForm(commentId) {
+      const form = document.getElementById("reply-form-" + commentId);
+      form.style.display = form.style.display === "none" ? "block" : "none";
+    }
+  </script>
+
+</body>
+
+</html>

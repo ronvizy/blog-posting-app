@@ -1,0 +1,138 @@
+[
+  {
+    "id": 1,
+    "post_id": 1,
+    "content": "I Think..",
+    "author": "vishal",
+    "timestamp": "2025-05-17T03:20:17.061329",
+    "parent_id": null
+  },
+  {
+    "id": 2,
+    "post_id": 1,
+    "content": "What?",
+    "author": "Vatsalya",
+    "timestamp": "2025-05-17T03:20:46.763480",
+    "parent_id": 1
+  },
+  {
+    "id": 3,
+    "post_id": 1,
+    "content": "I am Still Thinking..",
+    "author": "Vishal",
+    "timestamp": "2025-05-17T03:21:28.601403",
+    "parent_id": 2
+  },
+  {
+    "id": 4,
+    "post_id": 1,
+    "content": "Keep up",
+    "author": "Vatsalya",
+    "timestamp": "2025-05-17T03:21:54.877879",
+    "parent_id": 3
+  },
+  {
+    "id": 5,
+    "post_id": 1,
+    "content": "It completely depends on the types of vendors, as the general store vendors were happy, they have seen a significant growth.",
+    "author": "Vatsalya",
+    "timestamp": "2025-05-17T03:23:23.835261",
+    "parent_id": null
+  },
+  {
+    "id": 6,
+    "post_id": 2,
+    "content": "First of all, I think it will be great as tool, as a developer I use it to enhance speed in my work and using it made me realise that I still have to be cautios and a little knowledgable if not skilled to use it. One cannot fully rely on it and that's why I call it a tool.",
+    "author": "Rohan",
+    "timestamp": "2025-05-17T03:36:12.667350",
+    "parent_id": null
+  },
+  {
+    "id": 7,
+    "post_id": 2,
+    "content": "I agree, but it is also going to destroy a lot of jobs as it is already doing it.",
+    "author": "Vishal",
+    "timestamp": "2025-05-17T03:43:54.538924",
+    "parent_id": 6
+  },
+  {
+    "id": 8,
+    "post_id": 2,
+    "content": "Possible the man power will be reduced but a lot of options will also open as people advances their knowledge",
+    "author": "Aman",
+    "timestamp": "2025-05-17T03:46:20.842933",
+    "parent_id": 7
+  },
+  {
+    "id": 9,
+    "post_id": 2,
+    "content": "Cyber Security is safe as of now, nothing much has happened here.",
+    "author": "Cyber punk",
+    "timestamp": "2025-05-17T03:47:37.673157",
+    "parent_id": null
+  },
+  {
+    "id": 10,
+    "post_id": 2,
+    "content": "is it working",
+    "author": "aaa",
+    "timestamp": "2025-05-17T14:42:59.112816",
+    "parent_id": null
+  },
+  {
+    "id": 11,
+    "post_id": 2,
+    "content": "are replies working",
+    "author": "checker",
+    "timestamp": "2025-05-17T14:46:53.874977",
+    "parent_id": 8
+  },
+  {
+    "id": 12,
+    "post_id": 2,
+    "content": "Every industry can leverage it by taking it's assistance in their work",
+    "author": "Smarts",
+    "timestamp": "2025-05-17T14:54:19.301878",
+    "parent_id": null
+  },
+  {
+    "id": 13,
+    "post_id": 2,
+    "content": "checking again",
+    "author": "checking",
+    "timestamp": "2025-05-17T15:07:00.118989",
+    "parent_id": null
+  },
+  {
+    "id": 14,
+    "post_id": 2,
+    "content": "check",
+    "author": "check",
+    "timestamp": "2025-05-17T15:07:15.191211",
+    "parent_id": 13
+  },
+  {
+    "id": 15,
+    "post_id": 2,
+    "content": "Terry",
+    "author": "tie",
+    "timestamp": "2025-05-17T15:13:23.665053",
+    "parent_id": 11
+  },
+  {
+    "id": 16,
+    "post_id": 3,
+    "content": "I am writing a reply just to test it",
+    "author": "testing",
+    "timestamp": "2025-05-17T15:45:32.221680",
+    "parent_id": null
+  },
+  {
+    "id": 17,
+    "post_id": 3,
+    "content": "Test is successful",
+    "author": "tester2",
+    "timestamp": "2025-05-17T15:46:09.526632",
+    "parent_id": 16
+  }
+]

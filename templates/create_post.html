@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Post</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f7f8;
+      padding: 40px;
+    }
+
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 6px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .home-link {
+      display: block;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="/" class="home-link">← Home</a>
+
+  <div class="form-container">
+    <h2>Create New Post</h2>
+    <form action="/api/create" method="POST">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" placeholder="Enter post title" required>
+
+      <label for="content">Content</label>
+      <textarea name="content" id="content" placeholder="Write your post content here..." rows="6" required></textarea>
+
+      <label for="author">Author</label>
+      <input type="text" name="author" id="author" placeholder="Your name" required>
+
+      <button type="submit">Create Post</button>
+    </form>
+  </div>
+
+</body>
+</html>
