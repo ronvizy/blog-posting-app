@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Reddit Clone - Feed</title>
+  <title>Blog Post application - Feed</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -79,7 +79,8 @@
 
     {% for post in posts %}
       <div class="post-card">
-        <a class="post-title" href="{{ url_for('view_post', post_id=post.id) }}">
+        <a class="post-title" href="{{ url_for('main.view_post', post_id=post.id) }}">
+
           {{ post.title }}
         </a>
         <div class="meta">Posted by {{ post.author }} · {{ post.timestamp.strftime('%Y-%m-%d %H:%M') }}</div>
@@ -91,7 +92,7 @@
 
   </div>
 
-  <a href="{{ url_for('show_create_post_form') }}" class="create-post-btn" title="Create Post">+</a>
+  <a href="{{ url_for('main.show_create_post_form') }}" class="create-post-btn" title="Create Post">+</a>
 
 </body>
 </html>

@@ -1,8 +1,20 @@
 from flask import Flask, render_template, abort, request, jsonify, redirect, url_for
-from post import get_all_posts, get_post_by_id, create_post, load_posts
-from comments import get_replies_for_post, add_reply
+from app.post import get_all_posts, get_post_by_id, create_post, load_posts
+from app.comments import get_replies_for_post, add_reply
+# from flask_sqlalchemy import SQL
+from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+import os
+from models import Post, Comment
 
 app = Flask(__name__)
+
+load_dotenv()
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5432/reddit_clone'
+
+db = SQLAlchemy(app)
 
 #get feed
 @app.route('/')
